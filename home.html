@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="blogContent">
+        <h1>Welcome to Surviving Your 20s</h1>
+        <p>Here is the blog you will need to survive your 20s, to find advice and help in all topics from travel, finance to lifestyle. Make sure to subscribe below to get updates on all the new posts!</p>
+        <form id="subscription-form">
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+
+        <div id="subscriptionAlert" style="display: none;"></div>
+        <div id="success-alert" class="alert alert-success" style="display: none;">
+            You have successfully subscribed!
+        </div>
+        <form id="filter-form" action="/blogs" method="get">
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="">All</option>
+                <option value="FINANCE">Finance</option>
+                <option value="FOOD">Food</option>
+                <option value="TRAVEL">Travel</option>
+                <option value="TECH">Tech</option>
+            </select>
+            <label for="readTime">Filter by Read Time:</label>
+            <select name="readTime" id="readTime">
+                <option value="">All</option>
+                <option value="10">10 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="30">30 minutes</option>
+            </select>
+            <input type="submit" value="Apply Filter">
+        </form>
+    </div>
+
+    <ul id="blogList">
+        <li th:each="blog : ${blogList}">
+            <h2 th:text="${blog.title}"></h2>
+            <p th:text="${blog.category}"></p>
+            <p th:text="${blog.readTime}"></p>
+            <a th:href="@{'/blogs/' + ${blog.id}}">Read More</a>
+        </li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#filter-form').submit(function(event) {
+                event.preventDefault();
+
+                const category = $('#category').val();
+                const readTime = $('#readTime').val();
+
+                const url = '/blogs';
+                const data = { category: category, readTime: readTime };
+
+                $.get(url, data, function(response) {
+                    $('#blogList').html(response);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

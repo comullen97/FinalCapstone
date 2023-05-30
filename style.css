@@ -1,0 +1,63 @@
+body {
+    background-color: #FDF3E7;
+    color: #1D3557;
+}
+
+
+h1 {
+    color: #E63946;
+    font-size: 36px;
+}
+
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+select, button {
+    padding: 5px;
+    font-size: 16px;
+}
+
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    border: 2px solid #A8DADC;
+    padding: 10px;
+    background-color: #F1FAEE;
+}
+
+a {
+    color: #1D3557;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+h2 {
+    color: #E63946;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 5px;
+}
+
+div {
+    margin-top: 10px;
+    border: 2px solid #A8DADC;
+    padding: 10px;
+    background-color: #F1FAEE;
+}
